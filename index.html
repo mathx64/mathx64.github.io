@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/vetores-premium/raposa-fofa-segurando-desenho-de-amor_403370-235.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        #sim-container, #nao-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+        }
+
+        #sim-container {
+            left: calc(50% - 50px);
+        }
+
+        #nao-container {
+            left: calc(50% + 50px);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ff00a2;
+            font-size: 28px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-weight: bold;
+            padding: 10px;
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        }
+
+        #author {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #ff00a2;
+            font-size: 14px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        }
+
+        #sim {
+            background-color: green;
+            color: white;
+            transform: scale(1.5);
+        }
+
+        #nao {
+            background-color: red;
+            color: white;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Vai me dar meu zaad?</h1>
+
+    <div id="sim-container">
+        <button id="sim" onclick="window.location.href='https://www.boticario.com.br/zaad-eau-de-parfum-95ml-v2'">Sim 😍</button>
+    </div>
+
+    <div id="nao-container">
+        <button id="nao" onclick="moveButton()">Não 😭</button>
+    </div>
+
+    <div id="author">by matheusinho</div>
+
+    <script>
+        function moveButton() {
+            var naoContainer = document.getElementById('nao-container');
+            var maxWidth = window.innerWidth - naoContainer.clientWidth;
+            var maxHeight = window.innerHeight - naoContainer.clientHeight;
+            
+            var newX = Math.floor(Math.random() * maxWidth);
+            var newY = Math.floor(Math.random() * maxHeight);
+            
+            naoContainer.style.left = newX + 'px';
+            naoContainer.style.top = newY + 'px';
+
+            var emojis = ['😒', '😑', '😴', '😡', '😤' ,'🤨', '😣', '😪', '😕', '🫤', '😞'];
+            var randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            var naoButton = document.getElementById('nao');
+            naoButton.textContent = 'Não ' + randomEmoji;
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            var title = document.getElementById('title');
+            var imageHeight = document.body.offsetHeight;
+            var buttonsContainer = document.getElementById('sim-container').offsetTop;
+            var titleMarginTop = (imageHeight - buttonsContainer) / 2;
+            title.style.marginTop = titleMarginTop + 'px';
+        });
+    </script>
+</body>
+</html>
